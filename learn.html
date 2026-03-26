@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" data-page="learn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn — Free Financial Literacy Resources for Families | Your Hive</title>
+  <meta name="description" content="Free articles, activities, and strategies to help your family build money-smart habits — one conversation at a time.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── LEARN HERO ── */
+    .learn-hero {
+      background: linear-gradient(135deg, var(--teal-700), var(--teal));
+      padding: 4rem 0 5rem;
+      text-align: center;
+    }
+    .learn-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .learn-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.88);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── LEARN GRID SECTION ── */
+    .learn-grid-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    .learn-grid-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--teal-50);
+    }
+
+    /* ── LEARN CARDS ── */
+    .learn-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 768px) {
+      .learn-cards { grid-template-columns: repeat(3, 1fr); }
+    }
+    .learn-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .learn-card:hover {
+      box-shadow: var(--shadow-card-hover);
+      border-color: var(--teal-100);
+    }
+    .learn-card-img {
+      background: var(--mint);
+      font-size: 2.5rem;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .learn-card-body {
+      padding: 1.25rem;
+      flex: 1;
+    }
+    .learn-card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: var(--teal-50);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      margin-bottom: 0.6rem;
+    }
+    .learn-card-body h3 {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .learn-card-body p {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.55;
+    }
+    .learn-card-meta {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      border-top: 1px solid var(--gray-100);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .coming-soon-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: var(--coral-50);
+      color: var(--coral);
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      border: 1px solid var(--coral-100);
+    }
+
+    /* ── NEWSLETTER BANNER ── */
+    .learn-newsletter-banner {
+      background: var(--mint);
+      border: 1px solid var(--teal-100);
+      border-radius: var(--radius-2xl);
+      padding: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .learn-newsletter-banner h2 {
+      border: none;
+      margin-bottom: 0.5rem;
+      color: var(--teal-brand);
+    }
+    .learn-newsletter-banner p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      max-width: 560px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+    .kit-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 520px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .kit-form input[type="text"],
+    .kit-form input[type="email"] {
+      flex: 1;
+      min-width: 180px;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      color: var(--gray-900);
+      background: var(--white);
+    }
+    .kit-form input:focus { outline: none; border-color: var(--teal); }
+    .kit-form button {
+      background: var(--amber);
+      color: var(--gray-900);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-lg);
+      font-weight: 700;
+      font-size: 0.875rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+      font-family: var(--font-heading);
+    }
+    .kit-form button:hover { background: #E5B83C; }
+
+    /* ── EVENTS ── */
+    .events-section {
+      background: var(--gray-50);
+      padding: 4rem 0;
+    }
+    .events-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .events-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .events-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--gray-900);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+    .events-header p {
+      font-size: 1rem;
+      color: var(--gray-500);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .event-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--teal-50);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .event-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 4px 16px rgba(0,150,136,0.1);
+    }
+    @media (max-width: 768px) {
+      .event-card { grid-template-columns: 1fr; text-align: center; }
+      .event-date-block { margin: 0 auto; }
+      .event-meta { justify-content: center; }
+    }
+    .event-date-block {
+      background: var(--teal);
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 0.75rem 1rem;
+      text-align: center;
+      min-width: 72px;
+    }
+    .event-date-block .month { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; }
+    .event-date-block .day { font-size: 1.75rem; font-weight: 800; line-height: 1.1; }
+    .event-date-block .dow { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; }
+    .event-details h3 { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.3rem; }
+    .event-meta { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: var(--gray-500); }
+    .event-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .event-desc { font-size: 0.85rem; color: var(--gray-600); margin-top: 0.4rem; line-height: 1.5; }
+    .event-action { text-align: center; }
+    .event-rsvp-btn {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius-lg);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .event-rsvp-btn:hover { background: var(--teal-600); }
+    .event-spots { font-size: 0.65rem; color: var(--gray-400); margin-top: 0.35rem; }
+    .events-cta {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #FEF9E8;
+      border-radius: var(--radius-xl);
+      border: 1px solid #FDE68A;
+    }
+    .events-cta p { font-size: 0.9rem; color: var(--gray-600); margin-bottom: 0.75rem; }
+    .events-cta a { color: var(--teal); font-weight: 700; }
+    .events-cta a:hover { text-decoration: underline; }
+
+    /* ── FINAL CTA ── */
+    .learn-final-cta {
+      background: linear-gradient(135deg, var(--teal-700), var(--teal));
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+    .learn-final-cta .bee { font-size: 2.5rem; margin-bottom: 1rem; }
+    .learn-final-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .learn-final-cta p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .learn-final-cta .kit-form input[type="text"],
+    .learn-final-cta .kit-form input[type="email"] {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.3);
+      color: var(--white);
+    }
+    .learn-final-cta .kit-form input::placeholder { color: rgba(255,255,255,0.6); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="assets/Hive Logo White.png" alt="Your Hive">
+      <span>YOUR HIVE</span>
+    </a>
+    <div class="navbar-nav">
+      <a href="index.html" class="nav-home">Money Explorers Camp</a>
+      <a href="weekend-modules.html" class="nav-modules">Weekend Modules</a>
+      <a href="learn.html" class="nav-learn active">Learn</a>
+      <a href="about.html" class="nav-about">About</a>
+      <a href="join-team.html" class="nav-join">Join the Team</a>
+      <a href="index.html#registration" class="btn btn-primary btn-sm">Register Now</a>
+    </div>
+  </div>
+</nav>
+
+
+<div id="subscribed-banner" style="display:none;background:var(--mint);border:1px solid var(--teal-100);border-radius:var(--radius-lg);padding:1rem 1.5rem;text-align:center;margin:1rem auto;max-width:600px;color:var(--teal-brand);font-weight:600;">
+  🎉 You're in! Check your inbox to confirm your subscription.
+</div>
+<script>
+  if (window.location.search.includes('subscribed=1')) {
+    document.getElementById('subscribed-banner').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+</script>
+<!-- LEARN HERO -->
+<section class="learn-hero">
+  <div class="container reveal">
+    <h1>Learn With Your Hive</h1>
+    <p>Free articles, activities, and strategies to help your family build money-smart habits — one conversation at a time.</p>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<div class="learn-grid-section">
+
+  <!-- MONEY CONCEPTS -->
+  <h2 class="reveal">Money Concepts</h2>
+  <div class="learn-cards">
+    <a class="learn-card reveal" href="learn-compound-interest.html">
+      <div class="learn-card-img">📈</div>
+      <div class="learn-card-body">
+        <span class="learn-card-tag">Money Concepts</span>
+        <h3>Your Child's $5 a Week Could Be Worth $170,000 at Retirement</h3>
+        <p>At 7% returns, starting early beats saving more. Here's the math — and how to explain it tonight.</p>
+      </div>
+      <div class="learn-card-meta">5 min read · Ages 8–14</div>
+    </a>
+    <a class="learn-card reveal delay-1" href="#">
+      <div class="learn-card-img">🏦</div>
+      <div class="learn-card-body">
+        <span class="learn-card-tag">Money Concepts</span>
+        <h3>What Is a Bank, Really? How to Explain It to a Child Who's Never Thought About It</h3>
+        <p>Most kids know where money comes from. Very few know where it goes — or what it does when it gets there.</p>
+      </div>
+      <div class="learn-card-meta">4 min read · Ages 6–10 <span class="coming-soon-badge">Coming Soon</span></div>
+    </a>
+    <a class="learn-card reveal delay-2" href="#">
+      <div class="learn-card-img">💳</div>
+      <div class="learn-card-body">
+        <span class="learn-card-tag">Money Concepts</span>
+        <h3>Why "Buy Now, Pay Later" Makes Sense to Kids — and What to Say Instead</h3>
+        <p>Credit feels like magic to children. Here's how to make the invisible cost visible.</p>
+      </div>
+      <div class="learn-card-meta">5 min read · Ages 10–14 <span class="coming-soon-badge">Coming Soon</span></div>
+    </a>
+  </div>
+
+  <!-- FAMILY SYSTEMS -->
+  <h2 class="reveal">Family Systems</h2>
+  <div class="learn-cards">
+    <a class="learn-card reveal" href="#">
+      <div class="learn-card-img">🗓️</div>
+      <div class="learn-card-body">
+        <span class="learn-card-tag">Family Systems</span>
+        <h3>How to Run a Family Finance Meeting Your Kids Will Actually Look Forward To</h3>
+        <p>A 20-minute monthly meeting that turns money from a mystery into a family project.</p>
+      </div>
+      <div class="learn-card-meta">6 min read · All Ages <span class="coming-soon-badge">Coming Soon</span></div>
+    </a>
+    <a class="learn-card reveal delay-1" href="#">
+      <div class="learn-card-img">💰</div>
+      <div class="learn-card-body">
+        <span class="learn-card-tag">Allowance</span>
+        <h3>The Earn–Save–Give Framework: A Simple Allowance System That Teaches All Three</h3>
+        <p>Three jars, one principle, and a system your child will remember long after the dollars add up.</p>
+      </div>
+      <div class="learn-card-meta">5 min read · Ages 6–12 <span class="coming-soon-badge">Coming Soon</span></div>
+    </a>
+    <a class="learn-card reveal delay-2" href="#">
+      <div class="learn-card-img">🛒</div>
+      <div class="learn-card-body">
+        <span class="learn-card-tag">Family Systems</span>
+        <h3>The Grocery Store Challenge: How to Turn a Weekly Errand Into a Money Lesson</h3>
+        <p>Give your child a budget, a list, and 30 minutes. What happens next might surprise you.</p>
+      </div>
+      <div class="learn-card-meta">4 min read · Ages 8–13 <span class="coming-soon-badge">Coming Soon</span></div>
+    </a>
+  </div>
+
+  <!-- NEWSLETTER BANNER -->
+  <div class="learn-newsletter-banner reveal">
+    <h2>Get the full lessons — free, every week</h2>
+    <p>The Hive Weekly goes deeper with step-by-step activities, the Rule of 72, and real math you can use at the dinner table.</p>
+    <form class="kit-form" action="https://app.kit.com/forms/9199797/subscriptions" method="post">
+      <input type="hidden" name="redirect_to" value="https://salvationcode.github.io/your-hive-static/learn.html?subscribed=1">
+      <input type="text" name="fields[first_name]" placeholder="First Name">
+      <input type="email" name="email_address" placeholder="Your email" required>
+      <button type="submit">Join The Hive Weekly →</button>
+    </form>
+  </div>
+
+</div>
+
+<!-- IN-PERSON EVENTS -->
+<section class="events-section" id="events">
+  <div class="events-inner">
+    <div class="events-header reveal">
+      <h2>Upcoming Parent Events</h2>
+      <p>Free in-person sessions where parents can learn why financial literacy matters — and how to start the conversation at home.</p>
+    </div>
+
+    <div class="event-card reveal">
+      <div class="event-date-block">
+        <div class="month">Mar</div>
+        <div class="day">24</div>
+        <div class="dow">Monday</div>
+      </div>
+      <div class="event-details">
+        <h3>Why Financial Literacy Matters — And What Parents Can Do Now</h3>
+        <div class="event-meta">
+          <span>🕐 10:00 AM – 11:30 AM</span>
+          <span>📍 Learning Lab · 2846 NW 69th St, Seattle WA</span>
+        </div>
+        <p class="event-desc">An introductory session for parents. Learn why early financial education creates lasting advantages, and walk away with three activities you can try this week.</p>
+      </div>
+      <div class="event-action">
+        <a href="#" class="event-rsvp-btn">RSVP — Free</a>
+        <div class="event-spots">15 spots available</div>
+      </div>
+    </div>
+
+    <div class="event-card reveal">
+      <div class="event-date-block">
+        <div class="month">Apr</div>
+        <div class="day">14</div>
+        <div class="dow">Monday</div>
+      </div>
+      <div class="event-details">
+        <h3>The Money Talk: How to Have It Without Making It Awkward</h3>
+        <div class="event-meta">
+          <span>🕐 10:00 AM – 11:30 AM</span>
+          <span>📍 Learning Lab · 2846 NW 69th St, Seattle WA</span>
+        </div>
+        <p class="event-desc">Many parents avoid talking about money with their kids. This workshop gives you a framework and real scripts to make it natural, age-appropriate, and even fun.</p>
+      </div>
+      <div class="event-action">
+        <a href="#" class="event-rsvp-btn">RSVP — Free</a>
+        <div class="event-spots">15 spots available</div>
+      </div>
+    </div>
+
+    <div class="events-cta reveal">
+      <p>Want to be notified when new events are added? Subscribe to The Hive Weekly — we announce events there first.</p>
+      <a href="#newsletter-cta">Join The Hive Weekly →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="learn-final-cta" id="newsletter-cta">
+  <div class="bee">🐝</div>
+  <h2>Not ready for camp? Start with a free weekly lesson.</h2>
+  <p>The Hive Weekly delivers one money concept a week — broken down for families, with a dinner table activity you can do tonight.</p>
+  <form class="kit-form" action="https://app.kit.com/forms/9199797/subscriptions" method="post">
+    <input type="hidden" name="redirect_to" value="https://salvationcode.github.io/your-hive-static/learn.html?subscribed=1">
+    <input type="text" name="fields[first_name]" placeholder="First Name">
+    <input type="email" name="email_address" placeholder="Enter your email" required>
+    <button type="submit">Join The Hive Weekly — it's free →</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo"><img src="assets/Hive Logo White.png" alt="Your Hive"><span>YOUR HIVE</span></div>
+      <p class="footer-brand-desc">Building financial curiosity, awareness, and readiness — one child at a time. Based in Seattle, WA.</p>
+    </div>
+    <div><h4 class="footer-heading">Programs</h4><nav class="footer-links"><a href="index.html">Money Explorers Camp</a><a href="weekend-modules.html">Weekend Modules</a></nav></div>
+    <div><h4 class="footer-heading">Company</h4><nav class="footer-links"><a href="about.html">About</a><a href="join-team.html">Intern with Us</a><a href="learn.html">Learn</a><a href="#events">Parent Events</a></nav></div>
+    <div id="subscribe">
+      <h4 class="footer-heading">Stay Updated</h4>
+      <p style="color:var(--gray-400);font-size:0.875rem;margin-bottom:1rem;">Subscribe for camp updates and financial literacy tips.</p>
+      <form id="subscribe-form" class="footer-subscribe"><input type="email" id="subscribe-email" placeholder="Your email" required><button type="submit" class="footer-subscribe-btn">➤</button></form>
+      <p id="subscribe-msg" style="font-size:0.85rem;margin-top:0.5rem;"></p>
+      <div class="footer-contact">
+        <div class="footer-contact-item"><span>✉</span><a href="mailto:sayhello@your-hive.com" style="color:var(--gray-400);">sayhello@your-hive.com</a></div>
+        <div class="footer-contact-item"><span>📍</span><span>Seattle, WA</span></div>
+      </div>
+    </div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container footer-bottom-inner"><p class="footer-copy">&copy; 2026 Your Hive. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
